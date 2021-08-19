@@ -1,0 +1,14 @@
+*{
+    box-sizing: border-box;
+}
+#message{
+    resize: none;
+}
+footer{
+    height: 8vh;
+    
+}
+#text-center{
+    font-family: 'Brush Script MT', cursive;
+
+}

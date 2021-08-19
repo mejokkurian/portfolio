@@ -23,8 +23,9 @@
 
            <div class="col-md-6 col-3">
            <nav class="navbar navbar-expand-lg  navbar-light ">
-            <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler ml-auto " type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
+              
             </button>
           
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -360,6 +361,12 @@
 
     }
   })
+    const navLinks = document.querySelectorAll('.navbar-toggler')
+    const menuToggle = document.getElementById('navbarSupportedContent')
+    const bsCollapse = new bootstrap.Collapse(menuToggle)
+    navLinks.forEach((l) => {
+    addEventListener('click', () => { bsCollapse.toggle() })
+})
 
 </script>
 </body>

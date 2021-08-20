@@ -25,7 +25,7 @@
             <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
               <div class="nav-list-container">
               <ul class="navbar-nav ml-auto ">
-                <li class="nav-item active">
+                <li class="nav-item active collapse">
                   <a class="nav-link text-white"href="#Home-section">Home</a>
                 </li>
 
@@ -359,7 +359,12 @@ $("#navbarSupportedContent").on('show.bs.collapse', function() {
 
     }
   })
-    
+  const navLinks = document.querySelectorAll('.nav-item')
+  const menuToggle = document.getElementById('navbarSupportedContent')
+  const bsCollapse = new bootstrap.Collapse(menuToggle)
+  navLinks.forEach((l) => {
+    l.addEventListener('click', () => { bsCollapse.toggle() })
+})
 
  
      

@@ -15,50 +15,43 @@
     
 </head>
 <body>
-    <header class="bg-info fixed-top">
-        <div class="row text-white container-fluid   ">
-           <div class="col-md-6 col-9 pt-2">
-               <h3>Mejo k kurian</h3>
-           </div>
-
-           <div class="col-md-6 col-3">
-           <nav class="navbar navbar-expand-lg  navbar-light ">
-            <button class="navbar-toggler ml-auto " type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <header>
+           <nav class="navbar navbar-expand-lg  navbar-light fixed-top autohide  bg-info">
+             <a class="navbar-brand" href="#"> <strong>Mejo K Kurian</strong> </a>
+            <button class="navbar-toggler ml-auto " type="button" data-toggle="collapse" data-target="#navbarSupportedContent"  data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
           
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+              <div class="nav-list-container">
               <ul class="navbar-nav ml-auto ">
                 <li class="nav-item active">
-                  <a class="nav-link text-white"href="#Home-section">Home <span class="sr-only">(current)</span></a>
+                  <a class="nav-link text-white"href="#Home-section">Home</a>
                 </li>
 
                 <li class="nav-item active">
-                    <a class="nav-link text-white " href="#About-section">About <span class="sr-only">(current)</span></a>
+                    <a class="nav-link text-white " href="#About-section">About</a>
                 </li>
 
                 <li class="nav-item active">
-                    <a class="nav-link text-white " href="#Service-section">Service<span class="sr-only">(current)</span></a>
+                    <a class="nav-link text-white " href="#Service-section">Service</a>
                 </li>
 
                 <li class="nav-item active">
-                  <a class="nav-link text-white " href="#Education-section">Education<span class="sr-only">(current)</span></a>
+                  <a class="nav-link text-white " href="#Education-section">Education</a>
                 </li>
                  
                 <li class="nav-item active">
-                    <a class="nav-link text-white " href="#Skill-section">Skills<span class="sr-only">(current)</span></a>
+                    <a class="nav-link text-white " href="#Skill-section">Skills</a>
                 </li>
 
                 <li class="nav-item active">
                     <a class="nav-link text-white" href="#contact-section">Contacts<span class="sr-only">(current)</span></a>
                 </li>
-                
               </ul>
-              
+            </div>
             </div>
           </nav>
-        </div>
-        </div>
 
     </header>
     <section class="container-fluid" id="Home-section">
@@ -82,7 +75,7 @@
     <section class="jumbotron container mt-5" id="About-section">
         <div class="container ">
             <h1 class="text-center "><b> About </b><hr></h1>
-            <h3 class="text-center"><i> I’m a web developer <br>I'am from kerala <br> And i am a BCA gradute. Completed at 2021 <br>Currently iam learning more about CSS,HTML,Javascript </i> </h3>
+            <h3 class="text-center"><i> I’m a web developer <br>I'am from kerala <br> And i am a BCA gradute. Completed at 2021 <br>Currently iam learning more about CSS,HTML </i> </h3>
         </div>
     </section>
 
@@ -92,16 +85,16 @@
             <h1 class="text-center"> <b> Service </b> <hr> </h1>
             <div class="row pt-5">
                <div class="col-md-4 h-100 ">
-                <div class="card shadow-sm border-0 mx-auto" >
+                <div class="card shadow-sm border-0 mx-auto" style="height: auto" >
                     <img src="image/2181862-200.png" class="card-img-top mx-auto" alt="..." style="width: 100px;">
                     <div class="card-body">
                       <h5 class="card-title"> <strong> UI/UX DESIGN </strong></h5>
-                      <p class="card-text  ";><i> UI/UX involves planning and iterating a site's structure and layout. Once the proper information architecture is in place, I design the visual layer to create a beautiful user experience </i> </p>
+                      <p class="card-text  "><i> UI/UX involves planning and iterating a site's structure and layout. Once the proper information architecture is in place, I design the visual layer to create a beautiful user experience </i> </p>
                     </div>
                   </div>
                </div> 
                <div class="col-md-4 h-100">
-                <div class="card shadow-sm border-0  mx-auto" >
+                <div class="card shadow-sm border-0  mx-auto" style="height: auto" >
                     <img src="image/2181862-200.png" class="card-img-top mx-auto" alt="..." style="width: 100px;">
                     <div class="card-body">
                       <h5 class="card-title"> <strong> Frondend Development </strong></h5>
@@ -110,7 +103,7 @@
                   </div>
                </div> 
                <div class="col-md-4 h-100 ">
-                <div class="card text-center shadow-sm border-0  mx-auto" >
+                <div class="card text-center shadow-sm border-0  mx-auto " style="height: auto" >
                     <img src="image/2181862-200.png" class="card-img-top mx-auto" alt="..." style="width: 100px; ">
                     <div class="card-body">
                       <h5 class="card-title"> <strong> Backend Development </strong> </h5>
@@ -122,6 +115,7 @@
             </div>
         </div>
     </section>
+    
 
     <section class="jumbotron container " id="Education-section">
       <div class="container ">
@@ -224,6 +218,12 @@
 
 
 <script>
+
+$("#navbarSupportedContent").on('show.bs.collapse', function() {
+  $('a.nav-link').click(function() {
+      $("#navbarSupportedContent").collapse('hide');
+  });
+})
 
     let checkname = false;
     let checkemail = false;
@@ -332,7 +332,6 @@
     });
 
 
-
   $("#submit-form").submit((e)=>{
     
       e.preventDefault()
@@ -360,6 +359,10 @@
 
     }
   })
+    
+
+ 
+     
 
 </script>
 </body>

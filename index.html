@@ -16,13 +16,13 @@
 </head>
 <body>
     <header>
-           <nav class="navbar navbar-expand-lg  navbar-light fixed-top autohide  bg-info">
+           <nav class="navbar navbar-expand-lg  navbar-light fixed-top autohide  bg-info" id="navbar1">
              <a class="navbar-brand" href="#"> <strong>Mejo K Kurian</strong> </a>
-            <button class="navbar-toggler ml-auto " type="button" data-toggle="collapse" data-target="#navbarSupportedContent"  data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+             <button class="navbar-toggler ml-auto " type="button" data-toggle="collapse" data-target="#navbarSupportedContent"  data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
-            </button>
+              </button>
           
-            <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+              <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
               <div class="nav-list-container">
               <ul class="navbar-nav ml-auto ">
                 <li class="nav-item active collapse">
@@ -185,7 +185,7 @@
                       <p style="color: red;" id="error3"></p>
                     </div>
                       <div class="col-12 mx-auto" >
-                        <input type="email" placeholder="Email" name="email" class="form-control border-0 shadow-sm" id="email">
+                        <input type="email" placeholder="Email" name="email" oninput="this.value = this.value.replace(/\s/g,'');" class="form-control border-0 shadow-sm" id="email">
                         <p style="color: red;" id="error2"></p>
                       </div>
                       
@@ -218,17 +218,67 @@
 
 
 <script>
+     const navLinks = document.querySelectorAll('.nav-item')
+    const menuToggle = document.getElementById('navbarSupportedContent')
+    const bsCollapse = new bootstrap.Collapse(menuToggle)
+      navLinks.forEach((l) => {
+        console.log('cliked')
+    l.addEventListener('click', () => { bsCollapse.toggle() })
+   }) 
+ 
+    var lastScrollTop;
+    navbar = document.getElementById('navbar1');
+    window.addEventListener('scroll',function(){
+    var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+     if(scrollTop > lastScrollTop){
+        navbar.style.top='-80px';
+     }
+    else{
+        navbar.style.top='0';
+    }
+      lastScrollTop = scrollTop;
+     }); 
 
-$("#navbarSupportedContent").on('show.bs.collapse', function() {
-  $('a.nav-link').click(function() {
-      $("#navbarSupportedContent").collapse('hide');
-  });
-})
 
-    let checkname = false;
-    let checkemail = false;
-    let checkphone = false;
-    let checkmessage = false;
+   
+  
+
+
+  
+
+    
+ 
+        //----------------------Form validation-------------------------------------//
+
+      $('#email').keypress(function( email ) {
+      if(email.which === 32) 
+      return false;
+      });
+           
+      let checkname = false;
+      let checkemail = false;
+      let checkphone = false;
+      let checkmessage = false;
+
+
+
+     $(document).ready(function () {
+       $("#name").keyup(function () {
+        checkname1()
+       })
+
+       $("#email").keyup(function () {
+        checkemail1()
+       })
+
+       $("#phone").keyup(function () {
+        checkphone1()
+       })
+       $("#exampleFormControlTextarea1").keyup(function () {
+        checkmessage1()
+       })
+
+      });
 
 
     function checkname1() {
@@ -267,6 +317,10 @@ $("#navbarSupportedContent").on('show.bs.collapse', function() {
         checkemail = false
       }
     }
+
+     $('.noSpace').keyup(function() {
+     this.value = this.value.replace(/\s/g,'');
+     });
 
     function checkphone1() {
       let phonevalue = $("#phone").val()
@@ -311,27 +365,10 @@ $("#navbarSupportedContent").on('show.bs.collapse', function() {
       }
 
     }
+      
 
-
-    $(document).ready(function () {
-      $("#name").keyup(function () {
-        checkname1()
-      })
-
-      $("#email").keyup(function () {
-        checkemail1()
-      })
-
-      $("#phone").keyup(function () {
-        checkphone1()
-      })
-      $("#exampleFormControlTextarea1").keyup(function () {
-        checkmessage1()
-      })
-
-    });
-
-
+    //--------------------submit form-------------------------------//
+          
   $("#submit-form").submit((e)=>{
     
       e.preventDefault()
@@ -341,7 +378,7 @@ $("#navbarSupportedContent").on('show.bs.collapse', function() {
           data:$("#submit-form").serialize(),
           method:"post",
           success:function (response){
-              alert("Form submitted successfully")
+              alert("Form submitted successfully!!!")
               window.location.reload()
               //window.location.href="https://google.com"
           },
@@ -352,6 +389,8 @@ $("#navbarSupportedContent").on('show.bs.collapse', function() {
       })
     }
     else{
+      alert("Please fill!!!!")
+
       checkname1()
       checkphone1()
       checkmessage1()
@@ -359,16 +398,8 @@ $("#navbarSupportedContent").on('show.bs.collapse', function() {
 
     }
   })
-  const navLinks = document.querySelectorAll('.nav-item')
-  const menuToggle = document.getElementById('navbarSupportedContent')
-  const bsCollapse = new bootstrap.Collapse(menuToggle)
-  navLinks.forEach((l) => {
-    l.addEventListener('click', () => { bsCollapse.toggle() })
-})
 
- 
-     
-
+  
 </script>
 </body>
 </html>

@@ -169,7 +169,7 @@
                       <p style="color: red;" id="error1"></p>
                     </div>
                     <div class="col-12 mx-auto">
-                      <input type="tel" placeholder="Phone" name="phone" oninput="this.value=this.value.replace(/[^\d]/,'')" class="form-control border-0 shadow-sm" id="phone" maxlength="10">
+                      <input type="tel" placeholder="Phone" name="phone" oninput="this.value=this.value.replace(/[^\d]/,'')" class="form-control border-0 shadow-sm" id="phone" >
                       <p style="color: red;" id="error3"></p>
                     </div>
                       <div class="col-12 mx-auto" >
@@ -273,6 +273,16 @@
         checkname = false
       }
     }
+    $('#name').keypress(function(event){
+  if (
+      !event.key.match(/^[A-Za-z ]+$/) ||
+      (this.value.slice(-1) == ' ' && event.key == ' ')||
+      (this.value == '' && event.key == ' ')
+    ) {
+      event.preventDefault()
+    }
+   })
+
 
     function checkemail1() {
       let emailvalue = $("#email").val()
